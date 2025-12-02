@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EverGreen Proxy</title>
+
+  <!-- Tailwind + required scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="/uv/uv.bundle.js"></script>
+  <script src="/uv/uv.config.js"></script>
+  <script src="/baremux/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="/assets/js/t.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+  <script src="/sj/scramjet.all.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-green-950 text-green-400 font-sans overflow-hidden">
+
+  <!-- Top bar -->
+  <header class="flex justify-between items-center px-6 py-4 relative z-10">
+    <!-- Left: favicon + nav -->
+    <div class="flex items-center space-x-6">
+      <img src="/assets/favicon.png" alt="favicon" class="w-8 h-8" />
+      <nav class="flex space-x-6 text-green-400 font-bold">
+        <a href="#" class="nav-icon" id="games-icon"><i class="fa-solid fa-gamepad"></i></a>
+        <a href="#" class="nav-icon" id="apps-icon"><i class="fa-solid fa-mobile-screen"></i></a>
+        <a href="#" class="nav-icon"><i class="fa-solid fa-film"></i></a>
+      </nav>
+    </div>
+
+    <!-- Right: settings + discord -->
+    <div class="flex space-x-6">
+      <a href="#" class="nav-icon"><i class="fa-solid fa-gear"></i></a>
+      <a href="https://discord.com/users/YOUR_ID" target="_blank" class="nav-icon"><i class="fa-brands fa-discord"></i></a>
+    </div>
+  </header>
+
+  <!-- Center content -->
+  <main class="flex flex-col items-center justify-center h-[80vh] text-center relative z-10">
+    <h1 class="text-6xl font-extrabold neon-text tracking-wide">EverGreen</h1>
+    <p class="mt-2 text-green-300 italic text-lg">Inspired by an evergreen tree</p>
+
+    <!-- Search capsule -->
+    <div class="mt-10 w-full max-w-xl relative">
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        class="capsule w-full text-center text-green-400 placeholder-green-300 focus:outline-none"
+      />
+      <button class="search-btn absolute right-3 top-1/2 transform -translate-y-1/2">
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="absolute bottom-4 w-full text-center text-green-500 text-sm z-10">
+    <p><i class="fa-solid fa-tree"></i></p>
+  </footer>
+
+  <!-- Games Loader Menu -->
+  <div id="games-menu" class="loader-menu hidden">
+    <div class="menu-content">
+      <h2><i class="fa-solid fa-gamepad"></i> Games</h2>
+      <ul>
+        <li><a href="games.html" target="_blank"><i class="fa-solid fa-play"></i> Open Games</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Apps Loader Menu -->
+  <div id="apps-menu" class="loader-menu hidden">
+    <div class="menu-content">
+      <h2><i class="fa-solid fa-mobile-screen"></i> Apps</h2>
+      <ul>
+        <li><a href="apps.html" target="_blank"><i class="fa-solid fa-play"></i> Open Apps</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="main.js"></script>
+</body>
+</html>
