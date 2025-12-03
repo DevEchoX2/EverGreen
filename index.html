@@ -10,7 +10,6 @@
   <script src="/uv/uv.bundle.js"></script>
   <script src="/uv/uv.config.js"></script>
   <script src="/baremux/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="/assets/js/t.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
   <script src="/sj/scramjet.all.js"></script>
@@ -25,7 +24,6 @@
 
   <!-- Top bar -->
   <header class="flex justify-between items-center px-6 py-4 relative z-10">
-    <!-- Left: favicon + nav -->
     <div class="flex items-center space-x-6">
       <img src="/assets/favicon.png" alt="favicon" class="w-8 h-8" />
       <nav class="flex space-x-6 text-green-400 font-bold">
@@ -34,8 +32,6 @@
         <a href="#" class="nav-icon"><i class="fa-solid fa-film"></i></a>
       </nav>
     </div>
-
-    <!-- Right: settings + discord -->
     <div class="flex space-x-6">
       <a href="#" class="nav-icon"><i class="fa-solid fa-gear"></i></a>
       <a href="https://discord.com/users/YOUR_ID" target="_blank" class="nav-icon"><i class="fa-brands fa-discord"></i></a>
@@ -65,23 +61,29 @@
     <p><i class="fa-solid fa-tree"></i></p>
   </footer>
 
-  <!-- Games Loader Menu -->
-  <div id="games-menu" class="loader-menu hidden">
-    <div class="menu-content">
+  <!-- Games Overlay -->
+  <div id="games-menu" class="overlay-menu">
+    <div class="overlay-header">
       <h2><i class="fa-solid fa-gamepad"></i> Games</h2>
-      <ul>
-        <li><a href="games.html" target="_blank"><i class="fa-solid fa-play"></i> Open Games</a></li>
-      </ul>
+      <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <input type="text" placeholder="Search games..." onkeyup="searchGames(this.value)" 
+           class="capsule mt-4 w-2/3 mx-auto text-center" />
+    <div id="games-container" class="overlay-content">
+      <!-- Game cards will be injected here -->
     </div>
   </div>
 
-  <!-- Apps Loader Menu -->
-  <div id="apps-menu" class="loader-menu hidden">
-    <div class="menu-content">
+  <!-- Apps Overlay -->
+  <div id="apps-menu" class="overlay-menu">
+    <div class="overlay-header">
       <h2><i class="fa-solid fa-mobile-screen"></i> Apps</h2>
-      <ul>
-        <li><a href="apps.html" target="_blank"><i class="fa-solid fa-play"></i> Open Apps</a></li>
-      </ul>
+      <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <input type="text" placeholder="Search apps..." onkeyup="searchApps(this.value)" 
+           class="capsule mt-4 w-2/3 mx-auto text-center" />
+    <div id="apps-container" class="overlay-content">
+      <!-- App cards will be injected here -->
     </div>
   </div>
 
