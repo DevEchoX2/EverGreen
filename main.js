@@ -117,31 +117,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 500);
   }, 2000);
 
-  // --- Loader menus ---
+  // --- Overlay menus ---
   const gamesIcon = document.getElementById("games-icon");
   const appsIcon = document.getElementById("apps-icon");
   const gamesMenu = document.getElementById("games-menu");
   const appsMenu = document.getElementById("apps-menu");
 
+  // Open overlays
   gamesIcon.addEventListener("click", (e) => {
     e.preventDefault();
-    gamesMenu.classList.toggle("active");
+    gamesMenu.classList.add("active");
     appsMenu.classList.remove("active");
   });
 
   appsIcon.addEventListener("click", (e) => {
     e.preventDefault();
-    appsMenu.classList.toggle("active");
+    appsMenu.classList.add("active");
     gamesMenu.classList.remove("active");
   });
 
-  // Close menus when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!gamesMenu.contains(e.target) && !gamesIcon.contains(e.target)) {
-      gamesMenu.classList.remove("active");
-    }
-    if (!appsMenu.contains(e.target) && !appsIcon.contains(e.target)) {
-      appsMenu.classList.remove("active");
-    }
+  // Close buttons with animation
+  document.querySelectorAll(".overlay-menu .close-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const menu = btn.closest(".overlay-menu");
+      menu.style.opacity = "0";
+      menu.style.top = "100%";
+      setTimeout(() => {
+        menu.classList.remove("active");
+        menu.style.opacity = "";
+        menu.style.top = "";
+      }, 600); // match CSS transition
+    });
   });
 });
+
+// --- Search functions for overlays ---
+function searchGames(q) {
+  const items = document.querySelectorAll("#games-container .item");
+  items.forEach(item => {
+    const title = item.innerText.toLowerCase();
+    item.style.display = title.includes(q.toLowerCase()) ? "block" : "none";
+  });
+}
+
+function searchApps(q) {
+  const items = document.querySelectorAll("#apps-container .item");
+  items.forEach(item => {
+    const title = item.innerText.toLowerCase();
+    item.style.display = title.includes(q.toLowerCase()) ? "block" : "none";
+  });
+}
