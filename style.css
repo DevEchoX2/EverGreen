@@ -1,15 +1,19 @@
-/* Global neon vibe */
+/* ===========================
+   Global Neon Evergreen Theme
+   =========================== */
 body {
-  background: linear-gradient(135deg, #001a00, #003300);
-  color: #00ff66;
+  background: linear-gradient(135deg, #001a00, #003300); /* dark evergreen gradient */
+  color: #00ff66; /* neon green text */
   font-family: 'Inter', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  animation: bgShift 10s infinite alternate;
+  animation: bgShift 10s infinite alternate; /* subtle background shift */
 }
 
-/* Navigation icons */
+/* ===========================
+   Navigation Icons
+   =========================== */
 .nav-icon {
   font-size: 1.5rem;
   transition: all 0.3s ease;
@@ -21,7 +25,9 @@ body {
   transform: scale(1.2) rotate(5deg);
 }
 
-/* Capsule search bar */
+/* ===========================
+   Capsule Search Bar
+   =========================== */
 .capsule {
   border-radius: 12px;
   background: rgba(0, 255, 102, 0.1);
@@ -30,13 +36,16 @@ body {
   font-size: 1.1rem;
   box-shadow: 0 0 12px rgba(0, 255, 102, 0.5);
   transition: all 0.3s ease;
+  color: #00ff66;
 }
 .capsule:focus {
   background: rgba(0, 255, 102, 0.2);
   box-shadow: 0 0 20px #00ff66, inset 0 0 10px #00ff66;
 }
 
-/* Search button */
+/* ===========================
+   Search Button
+   =========================== */
 .search-btn {
   color: #00ff66;
   font-size: 1.3rem;
@@ -48,19 +57,22 @@ body {
   text-shadow: 0 0 10px #00ff66;
 }
 
-/* Neon title */
+/* ===========================
+   Neon Title
+   =========================== */
 .neon-text {
   color: #00ff66;
   text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66, 0 0 40px #00ff66;
   animation: glowPulse 2s infinite alternate;
 }
-
 @keyframes glowPulse {
   from { text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66; }
-  to { text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+  to   { text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
 }
 
-/* Footer */
+/* ===========================
+   Footer
+   =========================== */
 footer {
   opacity: 0.8;
   transition: opacity 0.3s ease;
@@ -70,61 +82,95 @@ footer:hover {
   text-shadow: 0 0 10px #00ff66;
 }
 
-/* Extra flair: animated background gradient */
+/* ===========================
+   Background Animation
+   =========================== */
 @keyframes bgShift {
-  0% { background: linear-gradient(135deg, #001a00, #003300); }
-  50% { background: linear-gradient(135deg, #002200, #004400); }
+  0%   { background: linear-gradient(135deg, #001a00, #003300); }
+  50%  { background: linear-gradient(135deg, #002200, #004400); }
   100% { background: linear-gradient(135deg, #001a00, #003300); }
 }
 
-/* Loader menu styling */
-.loader-menu {
+/* ===========================
+   Overlay Menus (Games & Apps)
+   =========================== */
+.overlay-menu {
   position: fixed;
-  bottom: -300px; /* hidden offscreen */
+  top: 100%; /* hidden offscreen initially */
   left: 50%;
   transform: translateX(-50%);
-  width: 300px;
-  background: rgba(0, 255, 102, 0.1);
+  width: 80%;
+  max-width: 800px;
+  height: 70%;
   border: 2px solid #00ff66;
   border-radius: 12px;
   box-shadow: 0 0 20px #00ff66;
-  transition: bottom 0.5s ease;
-  z-index: 50;
-}
-
-.loader-menu.active {
-  bottom: 80px; /* slides up */
-}
-
-.menu-content {
+  transition: top 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  z-index: 100;
   padding: 1rem;
-  text-align: center;
 }
 
-.menu-content h2 {
+/* Active state slides it up */
+.overlay-menu.active {
+  top: 15%;
+  opacity: 1;
+}
+
+/* ===========================
+   Games Overlay (Dark Evergreen)
+   =========================== */
+#games-menu.overlay-menu {
+  background: #014421; /* solid dark evergreen */
+  color: #00ffcc; /* neon accent text */
+}
+
+/* ===========================
+   Apps Overlay (Dark Evergreen)
+   =========================== */
+#apps-menu.overlay-menu {
+  background: #014421; /* same dark evergreen for consistency */
+  color: #00ffcc; /* neon accent text */
+}
+
+/* ===========================
+   Overlay Header
+   =========================== */
+.overlay-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: #00ff66;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+}
+.overlay-header h2 {
+  font-size: 1.5rem;
   text-shadow: 0 0 10px #00ff66;
 }
 
-.menu-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.menu-content li {
-  margin: 0.5rem 0;
-}
-
-.menu-content a {
+/* ===========================
+   Close Button
+   =========================== */
+.close-btn {
+  background: none;
+  border: none;
   color: #00ff66;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.close-btn:hover {
+  color: #00ffcc;
+  transform: rotate(90deg) scale(1.2);
 }
 
-.menu-content a:hover {
-  color: #00ffcc;
-  text-shadow: 0 0 8px #00ff66;
+/* ===========================
+   Overlay Content Area
+   =========================== */
+.overlay-content {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow-y: auto;
+  max-height: 80%;
 }
